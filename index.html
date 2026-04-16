@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  />
+  <title>Night Ritual</title>
+
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Night Ritual" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+
+  <style>
+    :root {
+      --bg: #08101f;
+      --bg2: #111a33;
+      --card: rgba(18, 26, 51, 0.92);
+      --text: #eef2ff;
+      --muted: #a9b6db;
+      --line: #2a365d;
+      --accent: #8b5cf6;
+      --accent2: #22c55e;
+      --danger: #ef4444;
+      --shadow: 0 16px 50px rgba(0, 0, 0, 0.25);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background:
+        radial-gradient(circle at top, #172554 0%, #08101f 45%, #050914 100%);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      padding: 16px;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      margin-bottom: 14px;
+      backdrop-filter: blur(12px);
+    }
+
+    h1, h2, h3 {
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+    }
+
+    p {
+      color: var(--muted);
+      line-height: 1.5;
+      margin: 8px 0 0;
+    }
+
+    .small {
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .step-title {
+      margin-top: 18px;
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    label {
+      display: block;
+      margin: 14px 0 8px;
+      font-weight: 700;
+    }
+
+    textarea, input {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: #0b1430;
+      color: var(--text);
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 105px;
+      resize: vertical;
+    }
+
+    textarea:focus, input:focus {
+      border-color: #7c86b3;
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.14);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    button, a.btn {
+      appearance: none;
+      border: none;
+      text-decoration: none;
+      border-radius: 14px;
+      padding: 12px 16px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .secondary {
+      background: #1c2850;
+      color: white;
+    }
+
+    .success {
+      background: var(--accent2);
+      color: #06210f;
+    }
+
+    .ghost {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--line);
+    }
+
+    .danger {
+      background: #2a1317;
+      color: #fecaca;
+      border: 1px solid #5a202a;
+    }
+
+    .status {
+      margin-top: 12px;
+      min-height: 20px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .entry {
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+
+    .entry h3 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .entry p {
+      margin: 4px 0;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #162448;
+      color: #dbe4ff;
+      font-size: 0.85rem;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 700px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      h1 {
+        font-size: 1.55rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="card">
+      <h1>🌙 Night Ritual</h1>
+      <p>
+        A 10–15 minute evening ritual to help you express yourself more honestly,
+        update fear with evidence, and be seen in small, safe steps.
+      </p>
+      <div class="pill">Daily reminder target: 9:00 PM America/Toronto</div>
+
+      <div class="btns">
+        <a class="btn secondary" href="/night-ritual.ics">Add to Apple Calendar</a>
+        <a id="googleCalendarBtn" class="btn secondary" href="#" target="_blank" rel="noopener">
+          Add to Google Calendar
+        </a>
+      </div>
+
+      <div class="btns">
+        <button id="installHintBtn" type="button" class="ghost">How to put this on my iPhone Home Screen</button>
+      </div>
+
+      <div id="installHint" class="status"></div>
+    </section>
+
+    <form id="ritualForm" class="card">
+      <h2>Tonight’s reflection</h2>
+      <p class="small">You can do this in under 15 minutes. Small honest reps count.</p>
+
+      <h3 class="step-title">1. Grounding</h3>
+      <label for="grounding">What am I feeling right now?</label>
+      <textarea id="grounding" placeholder="Name it simply, without overexplaining."></textarea>
+
+      <h3 class="step-title">2. Replay one moment</h3>
+      <label for="moment">One interaction today where I held back or expressed myself</label>
+      <textarea id="moment" placeholder="Describe the moment briefly."></textarea>
+
+      <div class="grid">
+        <div>
+          <label for="wanted">What did I want to say or do?</label>
+          <textarea id="wanted"></textarea>
+        </div>
+        <div>
+          <label for="actual">What did I actually say or do?</label>
+          <textarea id="actual"></textarea>
+        </div>
+      </div>
+
+      <h3 class="step-title">3. What stopped me?</h3>
+      <label for="block">If I held back, what stopped me?</label>
+      <textarea id="block" placeholder="Fear, old memory, uncertainty, overthinking, wanting to be liked..."></textarea>
+
+      <h3 class="step-title">4. Gentle rewrite</h3>
+      <label for="rewrite">What would a slightly more honest version of me have said or done?</label>
+      <textarea id="rewrite" placeholder="Not perfect. Just a little more honest."></textarea>
+
+      <h3 class="step-title">5. Evidence check</h3>
+      <div class="grid">
+        <div>
+          <label for="facts">What actually happened?</label>
+          <textarea id="facts" placeholder="Observable facts only."></textarea>
+        </div>
+        <div>
+          <label for="story">What did I imagine people thought?</label>
+          <textarea id="story" placeholder="Mind-reading, assumptions, fear story."></textarea>
+        </div>
+      </div>
+
+      <h3 class="step-title">6. Progress</h3>
+      <label for="progress">One small moment I showed up honestly today</label>
+      <textarea id="progress"></textarea>
+
+      <h3 class="step-title">7. Tomorrow</h3>
+      <label for="tomorrow">One tiny commitment for tomorrow</label>
+      <input id="tomorrow" type="text" placeholder='Example: "Say one preference without editing it first"' />
+
+      <label for="closing">Closing statement</label>
+      <input id="closing" type="text" value="I’m allowed to be seen in small steps." />
+
+      <div class="btns">
+        <button type="submit" class="primary">Save tonight’s entry</button>
+        <button type="button" id="exportBtn" class="secondary">Export entries</button>
+        <button type="button" id="clearBtn" class="ghost">Clear form</button>
+        <button type="button" id="wipeBtn" class="danger">Delete all saved entries</button>
+      </div>
+
+      <div id="status" class="status"></div>
+    </form>
+
+    <section class="card">
+      <h2>Recent entries</h2>
+      <div id="entries"></div>
+    </section>
+  </div>
+
+  <script>
+    const STORAGE_KEY = "night-ritual-entries-v1";
+    const APP_URL = window.location.origin + window.location.pathname.replace(/index\.html$/, "");
+
+    const form = document.getElementById("ritualForm");
+    const entriesEl = document.getElementById("entries");
+    const statusEl = document.getElementById("status");
+    const exportBtn = document.getElementById("exportBtn");
+    const clearBtn = document.getElementById("clearBtn");
+    const wipeBtn = document.getElementById("wipeBtn");
+    const installHintBtn = document.getElementById("installHintBtn");
+    const installHint = document.getElementById("installHint");
+    const googleCalendarBtn = document.getElementById("googleCalendarBtn");
+
+    const fields = [
+      "grounding",
+      "moment",
+      "wanted",
+      "actual",
+      "block",
+      "rewrite",
+      "facts",
+      "story",
+      "progress",
+      "tomorrow",
+      "closing"
+    ];
+
+    function escapeHtml(str = "") {
+      return str
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;");
+    }
+
+    function getEntries() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+      } catch {
+        return [];
+      }
+    }
+
+    function saveEntries(entries) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
+    }
+
+    function clearForm() {
+      form.reset();
+      document.getElementById("closing").value = "I’m allowed to be seen in small steps.";
+    }
+
+    function renderEntries() {
+      const entries = getEntries().slice().reverse();
+
+      if (!entries.length) {
+        entriesEl.innerHTML = `<p class="small">No entries yet.</p>`;
+        return;
+      }
+
+      entriesEl.innerHTML = entries.map(entry => {
+        const date = new Date(entry.createdAt).toLocaleString();
+        return `
+          <div class="entry">
+            <h3>${escapeHtml(date)}</h3>
+            <p><strong>Feeling:</strong> ${escapeHtml(entry.grounding || "")}</p>
+            <p><strong>Moment:</strong> ${escapeHtml(entry.moment || "")}</p>
+            <p><strong>Tiny commitment:</strong> ${escapeHtml(entry.tomorrow || "")}</p>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function buildGoogleCalendarLink() {
+      const title = encodeURIComponent("Night Ritual");
+      const details = encodeURIComponent(
+        "Fill out your nightly ritual. Open this page: " + APP_URL
+      );
+      const location = encodeURIComponent(APP_URL);
+
+      const start = "20260416T010000Z";
+      const end = "20260416T011500Z";
+
+      const stz = encodeURIComponent("America/Toronto");
+      const etz = encodeURIComponent("America/Toronto");
+      const recur = encodeURIComponent("RRULE:FREQ=DAILY");
+
+      return `https://calendar.google.com/calendar/r/eventedit?action=TEMPLATE&text=${title}&dates=${start}%2F${end}&stz=${stz}&etz=${etz}&details=${details}&location=${location}&recur=${recur}`;
+    }
+
+    googleCalendarBtn.href = buildGoogleCalendarLink();
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const entry = { createdAt: new Date().toISOString() };
+      for (const id of fields) {
+        entry[id] = document.getElementById(id).value.trim();
+      }
+
+      const entries = getEntries();
+      entries.push(entry);
+      saveEntries(entries);
+
+      statusEl.textContent = "Saved.";
+      renderEntries();
+      clearForm();
+    });
+
+    exportBtn.addEventListener("click", () => {
+      const entries = getEntries();
+      const blob = new Blob([JSON.stringify(entries, null, 2)], {
+        type: "application/json"
+      });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "night-ritual-entries.json";
+      a.click();
+      URL.revokeObjectURL(a.href);
+    });
+
+    clearBtn.addEventListener("click", () => {
+      clearForm();
+      statusEl.textContent = "Form cleared.";
+    });
+
+    wipeBtn.addEventListener("click", () => {
+      const ok = confirm("Delete all saved entries from this device?");
+      if (!ok) return;
+      localStorage.removeItem(STORAGE_KEY);
+      renderEntries();
+      statusEl.textContent = "All saved entries deleted.";
+    });
+
+    installHintBtn.addEventListener("click", () => {
+      installHint.textContent =
+        "On iPhone: open this site in Safari → Share → Add to Home Screen → keep 'Open as Web App' on → Add.";
+    });
+
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", async () => {
+        try {
+          await navigator.serviceWorker.register("/sw.js");
+        } catch (err) {
+          console.warn("Service worker registration failed:", err);
+        }
+      });
+    }
+
+    renderEntries();
+  </script>
+</body>
+</html>
