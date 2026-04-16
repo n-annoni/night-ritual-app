@@ -10,7 +10,7 @@ DTEND;TZID=America/Toronto:20260415T211500
 RRULE:FREQ=DAILY
 SUMMARY:Night Ritual
 DESCRIPTION:Fill out your nightly ritual.
-URL:https://REPLACE-THIS-WITH-YOUR-SITE.vercel.app/
+URL:https://n-annoni.github.io/night-ritual-app/
 BEGIN:VALARM
 TRIGGER:-PT0M
 ACTION:DISPLAY
